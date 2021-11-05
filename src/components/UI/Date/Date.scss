@@ -1,0 +1,24 @@
+.date{
+  background-color: darken(#4b4b4b,10);
+  width:5.7rem;
+  height:5.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius:0.5rem;
+  border:1px solid white;
+  text-align: center;
+  &__month{
+    font-weight: bold;
+    &::first-letter{
+      text-transform: uppercase;
+    }
+  }
+  &__year{
+    margin-top:0.3rem;
+  }
+  &__day{
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
