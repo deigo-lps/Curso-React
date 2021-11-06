@@ -1,8 +1,18 @@
+import React, { useState } from 'react';
 import ExpenseItem from "../ExpenseItem";
 import Card from "../../UI/Card";
+import ExpensesFilter from "../ExpensesFilter";
 import './ExpensesList.scss'
+
 export default function ExpenseList(props) {
-  const expenses = props.children.map((expense) =>
+
+  const [year, setYear] = useState("all");
+
+  const handleYear = (newYear) => {
+    setYear(newYear);
+  }
+
+  const expenses = props.children.filter(currentYear => currentYear.date.getFullYear() == year || year === "all").map((expense) =>
     <ExpenseItem
       title={expense.title}
       amount={expense.amount}
@@ -10,8 +20,11 @@ export default function ExpenseList(props) {
     ></ExpenseItem>
   );
   return (
-    <Card className="expenses">
-      {expenses}
-    </Card>
+    <>
+      <Card className="expenses">
+        <ExpensesFilter currentValue={year} onYearChange={handleYear} />
+        {expenses}
+      </Card>
+    </>
   )
 }
