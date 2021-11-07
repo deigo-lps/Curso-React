@@ -3,6 +3,7 @@ import Card from "../../UI/Card";
 import ExpensesFilter from "../ExpensesFilter";
 import ExpensesList from '../ExpensesList';
 import './Expenses.scss'
+import ExpensesChart from '../ExpensesChart';
 
 export default function Expenses(props) {
 
@@ -18,6 +19,7 @@ export default function Expenses(props) {
     <>
       <Card className="expenses">
         <ExpensesFilter currentValue={year} onYearChange={handleYear} />
+        <ExpensesChart expenses={filteredExpenses}/>
         <ExpensesList>
           {filteredExpenses}
         </ExpensesList>
