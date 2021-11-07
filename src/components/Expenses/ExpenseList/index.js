@@ -14,6 +14,7 @@ export default function ExpenseList(props) {
 
   const expenses = props.children.filter(currentYear => currentYear.date.getFullYear() == year || year === "all").map((expense) =>
     <ExpenseItem
+      key={expense.id}
       title={expense.title}
       amount={expense.amount}
       date={expense.date}
