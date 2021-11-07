@@ -1,3 +1,5 @@
+import React, {useState} from 'react'
+
 import './NewExpense.scss'
 import ExpenseForm from './ExpenseForm'
 
@@ -11,9 +13,23 @@ const NewExpense = (props) => {
     props.onAddExpense(expenseData);
   };
 
-  return (
+  const[show,setShow]=useState(0);
+
+  const handleShow = () =>{
+    setShow((prev)=>{return(!prev)})
+  }
+
+  if(show){
+    return (
+      <div className="new-expense">
+        <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancel={handleShow}></ExpenseForm>
+      </div>
+    )
+  }
+
+  return(
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} ></ExpenseForm>
+      <button onClick={handleShow}>Add New Expense</button>
     </div>
   )
 }
