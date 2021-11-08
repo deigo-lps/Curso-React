@@ -9,6 +9,8 @@ export default function ExpensesList(props){
       title={expense.title}
       amount={expense.amount}
       date={expense.date}
+      id={expense.id}
+      onDelete={props.onDelete}
     ></ExpenseItem>
   );
 

@@ -5,6 +5,22 @@
   padding: 0.5rem;
   margin: 1rem 0;
   background-color: #4b4b4b;
+  &__price-delete{
+    display: flex;
+    align-items: center;
+    button{
+      background-color: #40005d;
+      border:1px solid white;
+      border-radius:10px;
+      color:white;
+      padding:0.4rem;
+      transition: all 0.3s;
+      margin-left:0.5rem;
+      &:hover{
+        background-color: lighten(#40005d,10);
+      }
+    }
+  }
 }
 
 .expense-item__description {
@@ -34,6 +50,7 @@
   padding: 0.5rem;
   border-radius: 12px;
 }
+
 
 @media (min-width: 580px) {
   .expense-item__description {

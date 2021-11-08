@@ -20,7 +20,7 @@ export default function Expenses(props) {
       <Card className="expenses">
         <ExpensesFilter currentValue={year} onYearChange={handleYear} />
         <ExpensesChart expenses={filteredExpenses}/>
-        <ExpensesList>
+        <ExpensesList onDelete={props.onDelete}>
           {filteredExpenses}
         </ExpensesList>
       </Card>

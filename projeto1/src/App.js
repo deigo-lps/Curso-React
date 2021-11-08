@@ -41,10 +41,21 @@ function App() {
     )
   }
 
+  const handleDelete = (id) =>{
+    setExpenses(
+      (expenseList)=>{
+        return(
+          expenseList.filter(expenses=>expenses.id !== id)
+        )
+      }
+    )
+    // console.log(id)
+  }
+
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses>{expenses}</Expenses>
+      <Expenses onDelete={handleDelete}>{expenses}</Expenses>
     </div>
   );
 }
