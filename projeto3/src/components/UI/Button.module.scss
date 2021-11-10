@@ -1,0 +1,14 @@
+@import "../../variables";
+.button{
+  border:none;
+  padding:1rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: lighten($primary,30);
+  cursor:pointer;
+  color: white;
+  transition: all 0.3s;
+  &:hover{
+    background-color: darken(lighten($primary,30),7);
+  }
+}

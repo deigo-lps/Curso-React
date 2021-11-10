@@ -1,0 +1,15 @@
+@import "./variables";
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  background-color: $primary;
+  color:white;
+}
+
+body {
+  margin: 0;
+  padding:2rem;
+}
