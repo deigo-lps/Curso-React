@@ -11,5 +11,18 @@ html {
 
 body {
   margin: 0;
-  padding:2rem;
+  padding:2rem 25%;
 }
+
+@media screen and (max-width:1024px){
+  body{
+    padding:2rem 15%;
+  }
+}
+@media screen and (max-width:425px){
+  :root{
+    font-size:12px
+  }
+}
+
+// 425

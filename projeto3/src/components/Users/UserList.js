@@ -11,8 +11,6 @@ export default function UserList(props){
       </Card>
     )
 
-  console.log(props.users[0].name)
-
   const list=props.users.map(user => <User key={user.id} onUserDelete={props.onUserDelete}>{user}</User>)
 
   return(
