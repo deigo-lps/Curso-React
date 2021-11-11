@@ -7,8 +7,8 @@ export default function ErrorModal(props){
     <>
     <div className={styles.backdrop}/>
     <Card className={styles.modal}>
-      <span className={styles.modal__title}>{props.title}</span>
-      <span className={styles.modal__message}>{props.message}</span>
+      <h2 className={styles.modal__title}>{props.title}</h2>
+      <p className={styles.modal__message}>{props.message}</p>
       <Button onClick={props.close}>Okay</Button>
     </Card>
     </>
