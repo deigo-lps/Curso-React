@@ -1,43 +1,19 @@
-import React, { useState, useEffect } from "react";
-
+import React,{useContext} from "react";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import MainHeader from "./components/MainHeader/MainHeader";
 import AuthContext from "./context/auth-context";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  //vai rodar após a avaliação do componente.
-  //só vai rodar novamente se a dependência mudar.
-  //como não tem dependências só vai rodar uma vez.
-  useEffect(() => {
-    const storedLogin = localStorage.getItem("isLoggedIn");
-    if (storedLogin === "1") setIsLoggedIn(true);
-  }, []);
-
-  const loginHandler = (email, password) => {
-    // We should of course check email and password
-    // But it's just a dummy/ demo anyways
-    localStorage.setItem("isLoggedIn", "1");
-    setIsLoggedIn(true);
-  };
-
-  const logoutHandler = () => {
-    localStorage.removeItem("isLoggedIn");
-    setIsLoggedIn(false);
-  };
-
+  const ctx=useContext(AuthContext);
   return (
-    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, onLogout: logoutHandler }}>
-      <MainHeader/>
+    <>
+      <MainHeader />
       <main>
-        {/* como loginHandler e logoutHandler serão usados diretamente pelos componentes
-        tudo bem mandar por props. */}
-        {!isLoggedIn && <Login onLogin={loginHandler} />}
-        {isLoggedIn && <Home onLogout={logoutHandler} />}
+        {!ctx.isLoggedIn && <Login/>}
+        {ctx.isLoggedIn && <Home/>}
       </main>
-    </AuthContext.Provider>
+    </>
   );
 }
 
