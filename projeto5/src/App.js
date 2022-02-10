@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from "react";
-import Button from "./components/Button"
+import Button from "./components/Button";
 import Demo from "./components/Demo";
 function App() {
   const [showP, setShowP] = useState(false);
+  const [allowToggle, setAllowToggle] = useState(false);
 
   console.log("app running");
 
@@ -17,12 +18,19 @@ function App() {
   assim permitindo que a comparação do memo funcione.
   */
   const toggleParagraphHandler = useCallback(() => {
-    setShowP(prevP => !prevP);
-  },[]);
+    if (allowToggle) {
+      setShowP((prevP) => !prevP);
+    }
+  }, [allowToggle]);
+
+  const allowToggleHandler = () => {
+    setAllowToggle(true);
+  };
 
   return (
     <div className="main">
-      <Demo show={true}/>
+      <Demo show={showP} />
+      <Button onClick={allowToggleHandler}>Allow Toggling</Button>
       <Button onClick={toggleParagraphHandler}>Toggle Paragraph</Button>
     </div>
   );
