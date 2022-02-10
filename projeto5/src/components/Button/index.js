@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Button.module.scss";
 const Button = (props) =>{
+  console.log("botao");
   return(
     <button className={style.button} onClick={props.onClick}>
       {props.children}
@@ -8,4 +9,4 @@ const Button = (props) =>{
   )
 } 
 
-export default Button;
+export default React.memo(Button);
