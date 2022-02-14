@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import MoviesList from "./components/Movieslist/MoviesList";
 import "./style.scss";
 import loading from "./components/img/loading.svg";
@@ -8,7 +8,7 @@ function App() {
   const [isLoading, setisLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  async function fetchMoviesHandler() {
+  const fetchMoviesHandler = useCallback(async () => {
     setisLoading(true);
     setError(null);
     try{
@@ -32,7 +32,11 @@ function App() {
       setError(error.message);
     }
     setisLoading(false);
-  }
+  },[]);
+
+  useEffect(()=>{
+    fetchMoviesHandler();
+  },[])
 
   let content = <p style={{color: "white",fontSize: "1.5rem"}}>No movies were found.</p>
 
