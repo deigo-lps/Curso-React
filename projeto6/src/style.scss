@@ -8,7 +8,7 @@ section{
   display: flex;
   align-items: center;
   justify-content: center;
-  width:50%;
+  max-width:70rem;
   button{
     background-color: lighten($default,15);
     border:none;
