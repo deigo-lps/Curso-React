@@ -21,3 +21,17 @@ section{
     }
   }
 }
+.loading{
+  width:4rem;
+  height:4rem;
+  animation:linear 1.3s infinite spin; 
+}
+
+@keyframes spin {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
