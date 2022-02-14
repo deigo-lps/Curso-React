@@ -1,0 +1,23 @@
+$default: rgb(54, 54, 70);
+section{
+  background-color: lighten($default,10);
+  border-radius: 5px;
+  padding:2rem;
+  margin:auto;
+  margin-bottom:1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:50%;
+  button{
+    background-color: lighten($default,15);
+    border:none;
+    color:white;
+    font-size: 1.3rem;
+    padding:1rem;
+    border-radius: 5px;
+    &:hover{
+      background-color: lighten($default,20);
+    }
+  }
+}

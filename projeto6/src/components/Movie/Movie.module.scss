@@ -1,0 +1,13 @@
+.movie{
+  background-color: lighten(rgb(54, 54, 70),20);
+  border-radius: 5px;
+  padding:1rem;
+  width:100%;
+  text-align: center;
+  h2{
+    font-size:2rem;
+  }
+  p{
+    font-size:1.3rem;
+  }
+}
