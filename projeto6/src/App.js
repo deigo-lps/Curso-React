@@ -30,7 +30,6 @@ function App() {
         })
       }
       setMovies(loadedMovies);
-      console.log(data.results);
     } catch (error) {
       setError(error.message);
     }
@@ -41,10 +40,19 @@ function App() {
     fetchMoviesHandler();
   },[])
 
+  const deleteHandler = async (id) =>{
+    console.log(id);
+    const response = await fetch('https://curso-react-f70ea-default-rtdb.firebaseio.com/movies/'+id+".json",{
+      method:'DELETE'
+    });
+    console.log(response);
+    fetchMoviesHandler();
+  }
+
   let content = <p style={{color: "white",fontSize: "1.5rem"}}>No movies were found.</p>
 
   if (movies.length > 0){
-    content = <MoviesList movies={movies} />
+    content = <MoviesList movies={movies} deleteHandler={deleteHandler} />
   }
 
   else if(error){
@@ -60,6 +68,8 @@ function App() {
       }
     });
     const data = await response.json();
+    console.log(data)
+    fetchMoviesHandler();
   }
 
 
@@ -72,7 +82,7 @@ function App() {
         {!isLoading ? (
           <button onClick={fetchMoviesHandler}>Fetch Movies</button>
         ) : (
-          <img class="loading" src={loading}></img>
+          <img className="loading" src={loading}></img>
         )}
       </section>
       <section>
