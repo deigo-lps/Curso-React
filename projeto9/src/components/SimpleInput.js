@@ -2,24 +2,28 @@ import React, { useState } from "react";
 
 const SimpleInput = (props) => {
   const [enteredName, setEnteredName] = useState("");
-  const [touched,setTouched] = useState(false);
+  const [touched, setTouched] = useState(false);
 
-  const enteredNameIsValid = enteredName.trim() !== '';
-  const formInvalid = !enteredNameIsValid && touched;
+  const enteredNameIsValid = enteredName.trim() !== "";
+  const nameInvalid = !enteredNameIsValid && touched;
+
+  let formValid = false;
+
+  if (enteredNameIsValid) formValid=true;
 
   const inputHandler = (event) => {
     setEnteredName(event.target.value);
   };
 
-  const handleBlur = (event) =>{
+  const handleBlur = (event) => {
     setTouched(true);
-  }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     setTouched(true);
-    
+
     if (!enteredNameIsValid) {
       return;
     }
@@ -28,10 +32,9 @@ const SimpleInput = (props) => {
     setTouched(false);
   };
 
-
   return (
     <form onSubmit={handleSubmit}>
-      <div className={formInvalid ? 'form-control invalid' : 'form-control'}>
+      <div className={nameInvalid ? "form-control invalid" : "form-control"}>
         <label htmlFor="name">Your Name</label>
         <input
           type="text"
@@ -40,10 +43,12 @@ const SimpleInput = (props) => {
           onChange={inputHandler}
           onBlur={handleBlur}
         />
-        {formInvalid && touched && <p className="error-text">Name must not be blank.</p>}
+        {nameInvalid && touched && (
+          <p className="error-text">Name must not be blank.</p>
+        )}
       </div>
       <div className="form-actions">
-        <button>Submit</button>
+        <button disabled={!formValid}>Submit</button>
       </div>
     </form>
   );
