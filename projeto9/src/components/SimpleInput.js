@@ -1,38 +1,46 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 const SimpleInput = (props) => {
-  const nameInputRef = useRef();
-
   const [enteredName, setEnteredName] = useState("");
-  const [valid, setValid] = useState(true);
+  const [touched,setTouched] = useState(false);
+
+  const enteredNameIsValid = enteredName.trim() !== '';
+  const formInvalid = !enteredNameIsValid && touched;
+
   const inputHandler = (event) => {
     setEnteredName(event.target.value);
   };
 
+  const handleBlur = (event) =>{
+    setTouched(true);
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (enteredName.trim() === "") {
-      setValid(false);
+    setTouched(true);
+    
+    if (!enteredNameIsValid) {
       return;
     }
-    setValid(true);
-
     alert(enteredName);
-    alert(nameInputRef.current.value);
+    setEnteredName("");
+    setTouched(false);
   };
+
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className={valid ? 'form-control' : 'form-control invalid'}>
+      <div className={formInvalid ? 'form-control invalid' : 'form-control'}>
         <label htmlFor="name">Your Name</label>
         <input
           type="text"
           id="name"
-          ref={nameInputRef}
+          value={enteredName}
           onChange={inputHandler}
+          onBlur={handleBlur}
         />
-        {!valid && <p className="error-text">Name must not be blank.</p>}
+        {formInvalid && touched && <p className="error-text">Name must not be blank.</p>}
       </div>
       <div className="form-actions">
         <button>Submit</button>
