@@ -4,6 +4,10 @@ import User from "./User";
 import classes from "./Users.module.css";
 
 class Users extends Component {
+  componentWillUnmount(){
+    console.log('user will unmount.')
+  }
+
   constructor() {
     super();
     this.state = {
