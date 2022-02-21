@@ -21,3 +21,9 @@
   margin: 2rem 0;
   font-weight: bold;
 }
+.counter__buttons{
+  margin-bottom:1rem;
+}
+.counter__buttons button:first-child{
+  margin-right:1rem;
+}
