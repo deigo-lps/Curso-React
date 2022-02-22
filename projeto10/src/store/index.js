@@ -1,13 +1,35 @@
-import {createStore} from "redux";
+import { createStore } from "redux";
 
-const counterReducer = (state = { counter: 0 }, action) => {
+const counterReducer = (state = { counter: 0, showCounter: true }, action) => {
   switch (action.type) {
-    case 'increment':
-      return { counter: state.counter + 1 };
-    case 'decrement':
-      return { counter: state.counter - 1 };
-    case 'increase':
-      return { counter: state.counter + action.value};
+    case "increment": {
+      let { counter, ...rest } = state;
+      return {
+        counter: state.counter + 1,
+        ...rest,
+      };
+    }
+    case "decrement": {
+      let { counter, ...rest } = state;
+      return {
+        counter: state.counter - 1,
+        ...rest,
+      };
+    }
+    case "increase": {
+      let { counter, ...rest } = state;
+      return {
+        counter: state.counter + action.value,
+        ...rest,
+      };
+    }
+    case "toggle": {
+      let{ showCounter, ...rest } = state;
+      return{
+        showCounter : !state.showCounter,
+        ...rest
+      }
+    }
     default:
       return state;
   }

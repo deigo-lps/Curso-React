@@ -6,6 +6,7 @@ const Counter = () => {
   const dispatch = useDispatch();
   //seta subscription automaticamente.
   const counter = useSelector((state) => state.counter);
+  const toggle = useSelector((state) => state.showCounter);
 
   const incrementHandler = () => {
     dispatch({ type: "increment" });
@@ -16,12 +17,14 @@ const Counter = () => {
   const increaseHandler = () => {
     dispatch({ type: "increase", value: 5 });
   };
-  const toggleCounterHandler = () => {};
+  const toggleCounterHandler = () => {
+    dispatch({ type: "toggle" });
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
+      {toggle && <div className={classes.value}>{counter}</div>}
       <div className={classes.counter__buttons}>
         <button onClick={incrementHandler}>Increment</button>
         <button onClick={increaseHandler}>Increment by 5</button>
