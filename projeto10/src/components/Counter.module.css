@@ -22,8 +22,8 @@
   font-weight: bold;
 }
 .counter__buttons{
+  display: flex;
+  justify-content: center;
   margin-bottom:1rem;
-}
-.counter__buttons button:first-child{
-  margin-right:1rem;
+  gap:1rem;
 }
