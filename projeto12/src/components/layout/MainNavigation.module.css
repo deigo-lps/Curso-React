@@ -9,8 +9,10 @@
 }
 
 .logo {
-  font-size: 2rem;
-  color: white;
+  width:3.5rem;
+}
+.logo img{
+  width:100%
 }
 
 .nav ul {
