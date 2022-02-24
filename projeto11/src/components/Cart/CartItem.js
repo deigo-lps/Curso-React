@@ -11,6 +11,7 @@ const CartItem = (props) => {
     dispatch(
       cartActions.addItem({
         id,
+        price
       })
     );
   };
