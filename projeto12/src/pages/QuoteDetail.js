@@ -1,3 +1,4 @@
+import { useRouteMatch } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
@@ -30,6 +31,7 @@ const CommentButton = (props) => {
 };
 
 const QuoteDetail = () => {
+  const match = useRouteMatch();
   const params = useParams();
 
   const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId);
@@ -41,23 +43,23 @@ const QuoteDetail = () => {
       </Card>
     );
   }
-
+  console.log(match)
   return (
     <>
       <HighlightedQuote text={quote.text} author={quote.author} />
       <CommentButton
-        routePath={`/quotes/${params.quoteId}`}
-        path={`/quotes/${params.quoteId}/comments`}
+        routePath={match.path}
+        path={`${match.url}/comments`}
       >
         Load Comments
       </CommentButton>
       <CommentButton
-        routePath={`/quotes/${params.quoteId}/comments`}
-        path={`/quotes/${params.quoteId}`}
-      >
+        routePath={`${match.path}/comments`}
+        path={match.url}
+      > 
         Hide Comments
       </CommentButton>
-      <Route path={`/quotes/${params.quoteId}/comments`}>
+      <Route path={`${match.path}/comments`}>
         <Comments />
       </Route>
     </>
